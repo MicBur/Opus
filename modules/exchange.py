@@ -2,6 +2,7 @@ import ccxt
 import time
 from modules.debug_logger import logger
 from modules.security import security
+from modules.database import db
 
 class PaperWallet:
     def __init__(self, initial_balance=10000):
@@ -58,10 +59,13 @@ class PaperWallet:
 
         trade_record = {
             'symbol': symbol, 'side': 'sell' if pos['side'] == 'buy' else 'buy',
-            'amount': amount, 'price': price, 'timestamp': time.time(),
-            'type': 'close', 'pnl': pnl, 'pnl_percent': pnl_percent
+            'amount': amount, 'entry_price': pos['entry_price'], 'price': price, 'timestamp': time.time(),
+            'type': 'close', 'pnl': pnl, 'pnl_percent': pnl_percent, 'mode': 'paper'
         }
         self.trades.append(trade_record)
+
+        # Log to DB
+        db.log_trade(trade_record)
 
         del self.positions[symbol]
         logger.info(f"Paper Trade CLOSE: {symbol} @ {price}. PnL: {pnl:.2f} USDT ({pnl_percent:.2f}%)")

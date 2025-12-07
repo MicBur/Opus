@@ -6,6 +6,7 @@ from modules.debug_logger import logger
 from modules.security import security
 from modules.exchange import exchange_client
 from modules.strategy import strategy_engine
+from modules.learner import learner
 # from modules.telegram_bot import telegram_bot # Will implement later
 
 class AtomicNecroEngine:
@@ -43,7 +44,8 @@ class AtomicNecroEngine:
         await self.manage_positions()
 
         # 3. Learning (Check if 24h passed)
-        # TODO: Implement Learner
+        if learner.should_run():
+            learner.optimize()
 
     async def process_symbol(self, symbol):
         # Fetch Data
