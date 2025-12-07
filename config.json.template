@@ -1,0 +1,20 @@
+{
+    "BITGET_API_KEY": "YOUR_API_KEY",
+    "BITGET_API_SECRET": "YOUR_API_SECRET",
+    "BITGET_PASSPHRASE": "YOUR_PASSPHRASE",
+    "telegram_bot_token": "YOUR_BOT_TOKEN",
+    "telegram_chat_id": "YOUR_CHAT_ID",
+    "paper_mode": true,
+    "shadow_mode": true,
+    "is_trading": false,
+    "aggressiveness": 90,
+    "volume_spike_threshold": 2.5,
+    "rsi_entry_threshold": 30,
+    "orderbook_imbalance_threshold": 0.35,
+    "minimum_filters_required": 3,
+    "max_slippage_percent": 0.55,
+    "trade_cooldown_seconds": 300,
+    "learning_interval_hours": 24,
+    "hot_list_size": 25,
+    "backtest_months": 6
+}

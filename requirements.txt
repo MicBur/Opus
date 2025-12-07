@@ -1,0 +1,7 @@
+ccxt
+python-telegram-bot
+pandas
+numpy
+cryptography
+schedule
+psutil
